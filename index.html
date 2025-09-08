@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akademik Tadqiqotlar Jurnali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0A2342;
+            --white: #FFFFFF;
+            --emerald: #2CA58D;
+            --light-gray: #F5F5F5;
+            --dark-gray: #444444;
+            --gold: #D4AF37;
+            --light-blue: #E8F1F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .logo span {
+            color: var(--emerald);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--emerald);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+            width: 200px;
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--navy);
+            cursor: pointer;
+        }
+        
+        .language-switcher {
+            position: relative;
+        }
+        
+        .language-switcher select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: none;
+            background-color: var(--white);
+            color: var(--navy);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 35, 66, 0.8), rgba(10, 35, 66, 0.8)), url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--emerald);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #248f79;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+        
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--emerald);
+            margin: 0.5rem auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Page Content */
+        .page-content {
+            padding: 3rem 0;
+            min-height: 60vh;
+        }
+        
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .article-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-img {
+            height: 180px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .article-content {
+            padding: 1.5rem;
+        }
+        
+        .article-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-meta {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article-abstract {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .article-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Archives Section */
+        .archives {
+            background-color: var(--light-gray);
+            padding: 3rem 0;
+        }
+        
+        .archives-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .archive-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .archive-item h3 {
+            font-size: 1.2rem;
+            color: var(--emerald);
+            margin-bottom: 0.5rem;
+        }
+        
+        .archive-date {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .archive-abstract {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Editorial Board */
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .editor-card {
+            text-align: center;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .editor-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            background-color: #ddd;
+        }
+        
+        .editor-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .editor-position {
+            color: var(--emerald);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Authors Section */
+        .authors-section {
+            padding: 3rem 0;
+        }
+        
+        .authors-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, 
+        .filter-btn:hover {
+            background-color: var(--emerald);
+            color: var(--white);
+        }
+        
+        .authors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .author-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .author-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            background-color: #ddd;
+        }
+        
+        .author-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .author-field {
+            color: var(--emerald);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .author-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--navy);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 3rem 0;
+            background-color: var(--light-blue);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-details {
+            margin-top: 2rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            margin-right: 1rem;
+            color: var(--emerald);
+            font-size: 1.2rem;
+            min-width: 24px;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .pagination-item {
+            margin: 0 0.3rem;
+        }
+        
+        .pagination-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: var(--white);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .pagination-link:hover,
+        .pagination-link.active {
+            background-color: var(--emerald);
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--emerald);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--emerald);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                order: 3;
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .search-bar input {
+                width: 150px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .articles-grid,
+            .archives-list,
+            .editorial-grid,
+            .authors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .author-stats {
+                flex-wrap: wrap;
+            }
+        }
+        
+        /* Page specific styles */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Akademik<span>Jurnal</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Bosh Sahifa</a></li>
+                    <li><a href="#" class="nav-link" data-page="archives">Arxiv</a></li>
+                    <li><a href="#" class="nav-link" data-page="authors">Mualliflar</a></li>
+                    <li><a href="#" class="nav-link" data-page="articles">Maqolalar</a></li>
+                    <li><a href="#" class="nav-link" data-page="editorial">Tahririyat Kengashi</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Bog'lanish</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Maqolalarni qidirish...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="language-switcher">
+                    <select>
+                        <option>O'zbekcha</option>
+                        <option>English</option>
+                        <option>Русский</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container hero-content">
+                    <h2>Akademik Tadqiqotlar Jurnali</h2>
+                    <p>Turli fanlar sohasidagi ilmiy tadqiqotlar va innovatsion kashfiyotlarni nashr etish</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary">Maqola Yuborish</a>
+                        <a href="#" class="btn btn-secondary">So'nggi Sonni Ko'rish</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Articles -->
+            <section class="container">
+                <h2 class="section-title">Tanlangan Maqolalar</h2>
+                <div class="articles-grid">
+                    <div class="article-card">
+                        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80');"></div>
+                        <div class="article-content">
+                            <h3>Qaror Qabul Qilish Nevrologiyasi</h3>
+                            <div class="article-meta">Dr. Sarvar Alimov · 15 Iyul, 2023</div>
+                            <p class="article-abstract">Inson miyasidagi murakkab qaror qabul qilish jarayonlarining nevrologik mexanizmlarini o'rganish.</p>
+                            <div class="article-actions">
+                                <a href="#" class="btn btn-primary">Batafsil</a>
+                                <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="article-card">
+                        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                        <div class="article-content">
+                            <h3>Iqlim O'zgarishi Modellari</h3>
+                            <div class="article-meta">Prof. Jamol Usmonov · 28 Iyun, 2023</div>
+                            <p class="article-abstract">Qirg'oq hududlariga iqlim o'zgarishining uzoq muddatli ta'sirini tushunish uchun yangi bashorat modellari.</p>
+                            <div class="article-actions">
+                                <a href="#" class="btn btn-primary">Batafsil</a>
+                                <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="article-card">
+                        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                        <div class="article-content">
+                            <h3>Sun'iy Intellekt Tibbiy Tashxislashda</h3>
+                            <div class="article-meta">Dr. Nilufar Qodirova · 15 Iyun, 2023</div>
+                            <p class="article-abstract">Mashina o'rganish algoritmlari va tibbiy tasvirlash orqali erta kasallikni aniqlashda inqilob.</p>
+                            <div class="article-actions">
+                                <a href="#" class="btn btn-primary">Batafsil</a>
+                                <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin: 2rem 0;">
+                    <a href="#" class="btn btn-outline">Barcha Maqolalarni Ko'rish</a>
+                </div>
+            </section>
+
+            <!-- Archives Section -->
+            <section class="archives">
+                <div class="container">
+                    <h2 class="section-title">Jurnal Arxivlari</h2>
+                    <div class="archives-list">
+                        <div class="archive-item">
+                            <h3>12-jild, 3-son</h3>
+                            <div class="archive-date">Sentyabr 2023</div>
+                            <p class="archive-abstract">Barqaror shahar rivojlanishi va aqlli shahar texnologiyalari bo'yicha maxsus son.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>12-jild, 2-son</h3>
+                            <div class="archive-date">Iyun 2023</div>
+                            <p class="archive-abstract">Qayta tiklanadigan energiya tizimlari va energiya saqlash yechimlaridagi yutuqlar.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>12-jild, 1-son</h3>
+                            <div class="archive-date">Mart 2023</div>
+                            <p class="archive-abstract">Ta'lim texnologiyalari va raqamli o'rganish muhitidagi innovatsiyalar.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center" style="margin: 2rem 0;">
+                        <a href="#" class="btn btn-outline">Barcha Arxivlarni Ko'rish</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Editorial Board Preview -->
+            <section class="container">
+                <h2 class="section-title">Tahririyat Kengashi</h2>
+                <div class="editorial-grid">
+                    <div class="editor-card">
+                        <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                        <h3 class="editor-name">Dr. Jasur Ismoilov</h3>
+                        <div class="editor-position">Bosh Muharrir</div>
+                        <p>Nevrologiya professori, O'zbekiston Milliy Universiteti</p>
+                    </div>
+                    
+                    <div class="editor-card">
+                        <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');"></div>
+                        <h3 class="editor-name">Dr. Dilnoza Yusupova</h3>
+                        <div class="editor-position">Yordamchi Muharrir</div>
+                        <p>Atrof-muhit fanlari professori, Toshkent Texnika Universiteti</p>
+                    </div>
+                    
+                    <div class="editor-card">
+                        <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                        <h3 class="editor-name">Dr. Ravshan Tursunov</h3>
+                        <div class="editor-position">Boshqaruv Muharriri</div>
+                        <p>Kompyuter fanlari professori, Toshkent Axborot Texnologiyalari Universiteti</p>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin: 2rem 0;">
+                    <a href="#" class="btn btn-outline">Barcha A'zolarni Ko'rish</a>
+                </div>
+            </section>
+        </section>
+
+        <!-- Archives Page -->
+        <section id="archives" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Jurnal Arxivlari</h2>
+                        <p>Jurnalimizning so'nggi va avvalgi sonlarini ko'rib chiqing. Har bir son o'zining muhim tadqiqotlari va ilmiy maqolalari bilan ajralib turadi.</p>
+                    </div>
+                    
+                    <div class="archives-list">
+                        <div class="archive-item">
+                            <h3>12-jild, 3-son</h3>
+                            <div class="archive-date">Sentyabr 2023</div>
+                            <p class="archive-abstract">Barqaror shahar rivojlanishi va aqlli shahar texnologiyalari bo'yicha maxsus son.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>12-jild, 2-son</h3>
+                            <div class="archive-date">Iyun 2023</div>
+                            <p class="archive-abstract">Qayta tiklanadigan energiya tizimlari va energiya saqlash yechimlaridagi yutuqlar.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>12-jild, 1-son</h3>
+                            <div class="archive-date">Mart 2023</div>
+                            <p class="archive-abstract">Ta'lim texnologiyalari va raqamli o'rganish muhitidagi innovatsiyalar.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>11-jild, 4-son</h3>
+                            <div class="archive-date">Dekabr 2022</div>
+                            <p class="archive-abstract">Sun'iy intellekt va ma'lumotlar tahlilining zamonaviy usullari.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>11-jild, 3-son</h3>
+                            <div class="archive-date">Sentyabr 2022</div>
+                            <p class="archive-abstract">Tibbiyot va biotexnologiyadagi yangiliklar va kashfiyotlar.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                        
+                        <div class="archive-item">
+                            <h3>11-jild, 2-son</h3>
+                            <div class="archive-date">Iyun 2022</div>
+                            <p class="archive-abstract">Iqtisodiyot va moliyaning zamonaviy muammolari va yechimlari.</p>
+                            <a href="#" class="btn btn-primary">Sonni Ko'rish</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link"><i class="fas fa-chevron-left"></i></a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link active">1</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">2</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">3</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link"><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Authors Page -->
+        <section id="authors" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Mualliflar</h2>
+                        <p>Jurnalimizda maqolalari nashr etilgan taniqli olimlar va tadqiqotchilar bilan tanishing.</p>
+                    </div>
+                    
+                    <div class="authors-filters">
+                        <button class="filter-btn active">Barchasi</button>
+                        <button class="filter-btn">Nevrologiya</button>
+                        <button class="filter-btn">Atrof-muhit</button>
+                        <button class="filter-btn">Texnologiya</button>
+                        <button class="filter-btn">Tibbiyot</button>
+                        <button class="filter-btn">Iqtisodiyot</button>
+                    </div>
+                    
+                    <div class="authors-grid">
+                        <div class="author-card">
+                            <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                            <h3 class="author-name">Dr. Jasur Ismoilov</h3>
+                            <div class="author-field">Nevrologiya</div>
+                            <p>Nevrologiya sohasida 15 yillik tajribaga ega professör.</p>
+                            <div class="author-stats">
+                                <div class="stat">
+                                    <div class="stat-number">24</div>
+                                    <div class="stat-label">Maqolalar</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">184</div>
+                                    <div class="stat-label">Sitatlar</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="author-card">
+                            <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');"></div>
+                            <h3 class="author-name">Dr. Dilnoza Yusupova</h3>
+                            <div class="author-field">Atrof-muhit</div>
+                            <p>Atrof-muhitni muhofaza qilish va iqlim o'zgarishi mutaxassisi.</p>
+                            <div class="author-stats">
+                                <div class="stat">
+                                    <div class="stat-number">18</div>
+                                    <div class="stat-label">Maqolalar</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">127</div>
+                                    <div class="stat-label">Sitatlar</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="author-card">
+                            <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                            <h3 class="author-name">Dr. Ravshan Tursunov</h3>
+                            <div class="author-field">Texnologiya</div>
+                            <p>Sun'iy intellekt va ma'lumotlar tahlili bo'yicha mutaxassis.</p>
+                            <div class="author-stats">
+                                <div class="stat">
+                                    <div class="stat-number">32</div>
+                                    <div class="stat-label">Maqolalar</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">256</div>
+                                    <div class="stat-label">Sitatlar</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="author-card">
+                            <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1551836026-d5c8c5ab235e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                            <h3 class="author-name">Dr. Sevara Karimova</h3>
+                            <div class="author-field">Tibbiyot</div>
+                            <p>Onkologiya va genetik tadqiqotlar bo'yicha yetakchi mutaxassis.</p>
+                            <div class="author-stats">
+                                <div class="stat">
+                                    <div class="stat-number">29</div>
+                                    <div class="stat-label">Maqolalar</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">312</div>
+                                    <div class="stat-label">Sitatlar</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="author-card">
+                            <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80');"></div>
+                            <h3 class="author-name">Dr. Aziza Xasanova</h3>
+                            <div class="author-field">Iqtisodiyot</div>
+                            <p>Makroiqtisodiyot va moliya bo'yicha tadqiqotchi.</p>
+                            <div class="author-stats">
+                                <div class="stat">
+                                    <div class="stat-number">21</div>
+                                    <div class="stat-label">Maqolalar</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">145</div>
+                                    <div class="stat-label">Sitatlar</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="author-card">
+                            <div class="author-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');"></div>
+                            <h3 class="author-name">Dr. Malika Rahimova</h3>
+                            <div class="author-field">Psixologiya</div>
+                            <p>Kognitiv psixologiya va neyroilmlar bo'yicha mutaxassis.</p>
+                            <div class="author-stats">
+                                <div class="stat">
+                                    <div class="stat-number">16</div>
+                                    <div class="stat-label">Maqolalar</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">98</div>
+                                    <div class="stat-label">Sitatlar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link"><i class="fas fa-chevron-left"></i></a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link active">1</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">2</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">3</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link"><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Page -->
+        <section id="articles" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Maqolalar</h2>
+                        <p>Jurnalimizda nashr etilgan barcha ilmiy maqolalar to'plami. So'nggi tadqiqotlar va kashfiyotlar bilan tanishing.</p>
+                    </div>
+                    
+                    <div class="articles-grid">
+                        <div class="article-card">
+                            <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80');"></div>
+                            <div class="article-content">
+                                <h3>Qaror Qabul Qilish Nevrologiyasi</h3>
+                                <div class="article-meta">Dr. Sarvar Alimov · 15 Iyul, 2023</div>
+                                <p class="article-abstract">Inson miyasidagi murakkab qaror qabul qilish jarayonlarining nevrologik mexanizmlarini o'rganish.</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-primary">Batafsil</a>
+                                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                            <div class="article-content">
+                                <h3>Iqlim O'zgarishi Modellari</h3>
+                                <div class="article-meta">Prof. Jamol Usmonov · 28 Iyun, 2023</div>
+                                <p class="article-abstract">Qirg'oq hududlariga iqlim o'zgarishining uzoq muddatli ta'sirini tushunish uchun yangi bashorat modellari.</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-primary">Batafsil</a>
+                                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                            <div class="article-content">
+                                <h3>Sun'iy Intellekt Tibbiy Tashxislashda</h3>
+                                <div class="article-meta">Dr. Nilufar Qodirova · 15 Iyun, 2023</div>
+                                <p class="article-abstract">Mashina o'rganish algoritmlari va tibbiy tasvirlash orqali erta kasallikni aniqlashda inqilob.</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-primary">Batafsil</a>
+                                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                            <div class="article-content">
+                                <h3>Nanotexnologiyalar va Materialshunoslik</h3>
+                                <div class="article-meta">Dr. Farhod Ismatov · 2 Iyun, 2023</div>
+                                <p class="article-abstract">Yangi materiallar yaratishda nanotexnologiyalarning qo'llanilishi va istiqbollari.</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-primary">Batafsil</a>
+                                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                            <div class="article-content">
+                                <h3>Kriptovalyuta Bozori Tahlili</h3>
+                                <div class="article-meta">Dr. Aziza Xasanova · 20 May, 2023</div>
+                                <p class="article-abstract">Kriptovalyuta bozoridagi o'zgarishlar va ularning global iqtisodiyotga ta'siri.</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-primary">Batafsil</a>
+                                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="article-card">
+                            <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');"></div>
+                            <div class="article-content">
+                                <h3>Tabiiy Ofatlar va Ular Oldini Olish</h3>
+                                <div class="article-meta">Dr. Dilnoza Yusupova · 5 May, 2023</div>
+                                <p class="article-abstract">Tabiiy ofatlarning oldini olish va ularga tayyorgarlik ko'rish bo'yicha yangi usullar.</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-primary">Batafsil</a>
+                                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link"><i class="fas fa-chevron-left"></i></a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link active">1</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">2</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">3</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link"><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editorial Board Page -->
+        <section id="editorial" class="page">
+            <div class="page-content">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Tahririyat Kengashi</h2>
+                        <p>Jurnalimizning tahririyat kengashi taniqli olimlar va mutaxassislardan iborat bo'lib, ular maqolalarni baholash va nashrga tayyorlashda muhim rol o'ynaydilar.</p>
+                    </div>
+                    
+                    <div class="editorial-grid">
+                        <div class="editor-card">
+                            <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                            <h3 class="editor-name">Dr. Jasur Ismoilov</h3>
+                            <div class="editor-position">Bosh Muharrir</div>
+                            <p>Nevrologiya professori, O'zbekiston Milliy Universiteti</p>
+                            <p class="editor-bio">15 yillik tadqiqotchi va akademik. 100 dan ortiq ilmiy maqolalar muallifi.</p>
+                        </div>
+                        
+                        <div class="editor-card">
+                            <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');"></div>
+                            <h3 class="editor-name">Dr. Dilnoza Yusupova</h3>
+                            <div class="editor-position">Yordamchi Muharrir</div>
+                            <p>Atrof-muhit fanlari professori, Toshkent Texnika Universiteti</p>
+                            <p class="editor-bio">Atrof-muhitni muhofaza qilish sohasida xalqaro darajada tan olingan mutaxassis.</p>
+                        </div>
+                        
+                        <div class="editor-card">
+                            <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                            <h3 class="editor-name">Dr. Ravshan Tursunov</h3>
+                            <div class="editor-position">Boshqaruv Muharriri</div>
+                            <p>Kompyuter fanlari professori, Toshkent Axborot Texnologiyalari Universiteti</p>
+                            <p class="editor-bio">Sun'iy intellekt va ma'lumotlar tahlili bo'yicha yetakchi mutaxassis.</p>
+                        </div>
+                        
+                        <div class="editor-card">
+                            <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1551836026-d5c8c5ab235e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');"></div>
+                            <h3 class="editor-name">Dr. Sevara Karimova</h3>
+                            <div class="editor-position">Bo'lim Muharriri</div>
+                            <p>Tibbiyot fanlari professori, Toshkent Tibbiyot Akademiyasi</p>
+                            <p class="editor-bio">Onkologiya va genetik tadqiqotlar bo'yicha 20 yillik tajribaga ega olim.</p>
+                        </div>
+                        
+                        <div class="editor-card">
+                            <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80');"></div>
+                            <h3 class="editor-name">Dr. Aziza Xasanova</h3>
+                            <div class="editor-position">Bo'lim Muharriri</div>
+                            <p>Iqtisodiyot professori, O'zbekiston Iqtisodiyot Universiteti</p>
+                            <p class="editor-bio">Makroiqtisodiyot va moliya bo'yicha taniqli tadqiqotchi va analitik.</p>
+                        </div>
+                        
+                        <div class="editor-card">
+                            <div class="editor-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80');"></div>
+                            <h3 class="editor-name">Dr. Malika Rahimova</h3>
+                            <div class="editor-position">Ekspert</div>
+                            <p>Psixologiya professori, Toshkent Davlat Universiteti</p>
+                            <p class="editor-bio">Kognitiv psixologiya va neyroilmlar bo'yicha mutaxassis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="contact-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Bog'lanish</h2>
+                        <p>Jurnalimiz bilan bog'lanish uchun quyidagi ma'lumotlardan foydalanishingiz mumkin. Savol va takliflaringizni qabul qilamiz.</p>
+                    </div>
+                    
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h3>Aloqa Ma'lumotlari</h3>
+                            <div class="contact-details">
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Manzil</h4>
+                                        <p>100174, Toshkent shahar, Universitet ko'chasi, 4</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Telefon</h4>
+                                        <p>+998 (71) 123-45-67</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Elektron Pochta</h4>
+                                        <p>info@akademikjurnal.uz</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Ish Vaqti</h4>
+                                        <p>Dushanba - Juma: 9:00 - 18:00</p>
+                                        <p>Shanba - Yakshanba: Dam olish kuni</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3>Xabar Yuborish</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="name">Ismingiz</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Elektron Pochta</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Mavzu</label>
+                                    <input type="text" id="subject" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Xabar</label>
+                                    <textarea id="message" class="form-control" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Xabar Yuborish</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Akademik Jurnal</h3>
+                    <p>Turli fanlar sohasidagi ilmiy tadqiqotlar va innovatsion kashfiyotlarni nashr etish.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tezkor Havolalar</h3>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Bosh Sahifa</a></li>
+                        <li><a href="#" class="nav-link" data-page="archives">Arxiv</a></li>
+                        <li><a href="#" class="nav-link" data-page="authors">Mualliflar</a></li>
+                        <li><a href="#" class="nav-link" data-page="articles">Maqolalar</a></li>
+                        <li><a href="#" class="nav-link" data-page="editorial">Tahririyat Kengashi</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Bog'lanish</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Bog'lanish Ma'lumotlari</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 100174, Toshkent shahar, Universitet ko'chasi, 4</p>
+                    <p><i class="fas fa-phone"></i> +998 (71) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@akademikjurnal.uz</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Akademik Tadqiqotlar Jurnali. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+
+        // Page navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+                
+                // Show the selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Close mobile menu if open
+                document.getElementById('main-nav').classList.remove('active');
+            });
+        });
+
+        // Filter buttons for authors page
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
